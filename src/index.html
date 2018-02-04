@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" href="./static/favicon.ico">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<script type="text/javascript">
+		(function(){
+			function remSet(){
+				document.documentElement.style.fontSize = document.documentElement.getBoundingClientRect().width/12 + 'px';
+			}
+			window.addEventListener('resize',remSet);//监听窗口大小变化
+			remSet();//初始化
+		})(window)	
+	</script>
+	<title>紅一葉</title>
+</head>
+<body>
+	<div id="root"></div>
+</body>
+</html>

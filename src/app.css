@@ -1,0 +1,795 @@
+/*标签的默认属性设置beg*/
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.4;
+    background-color: #fff;
+    font-family: 'Microsoft YaHei';
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+img{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+input{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+}
+/*去内联元素的间距*/
+.clear-inline-gap{
+    letter-spacing: -5px;
+    font-size: 0;
+}
+.normal-fontStyle{
+    letter-spacing: normal;
+    font-size: 14px;
+}
+/*主页部分*/
+.m-wrapper{
+	width: 100%;
+}
+.m-center{
+	width: 10rem;
+	margin: 0 auto;
+}
+.m-max-center{
+	width: 11rem;
+	margin: 0 auto;
+}
+/*头部导航部分*/
+.top-wrapper{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 100%;
+    height: 1.2rem;
+    background: #fff;
+	border-bottom: #e5e5e5 1px solid;
+}
+/*主页的头部导航*/
+.top-m-wrapper{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.top-m-userIcon{
+    width: 1rem;
+    height: 1rem;
+    border-radius: 1rem;
+    margin-left: 0.8rem;
+}
+.top-m-list{
+    display: inline-block;
+    width: 4rem;
+    height: 0.8rem;
+    border-radius: 0.4rem;
+    border: #ff6969 1px solid;
+}
+.top-m-list-span{
+	display: inline-block;
+    width: 50%;
+    height: 0.8rem;
+	line-height: 0.8rem;
+	margin-top: -1px;
+	text-align: center;
+    font-size: 15px;
+    border-radius: .4rem;
+	color: #ff6969;
+}
+.top-m-list-span-selected{
+    color: #ffffff;
+    background-color: #ff6969;
+}
+.top-m-list-span-unselected{
+    display: inline-block;
+}
+.top-m-list-searchIcon{
+    width: .8rem;
+	height: .8rem;
+	margin-right: 0.8rem;
+}
+/*公告列表部分*/
+.notice-wrapper{
+    border-bottom: #f6f6f6 5px solid;
+    margin-top: 1.2rem;
+}
+.notice-wrapper-li{
+    height: 2rem;
+}
+.userhead{
+	display: inline-flex;
+	align-items: center;
+    width: 1.5rem;
+    height: 100%;
+}
+.userhead-img{
+    border-radius: 1rem;
+    width: 1rem;
+    height: 1rem;
+}
+.notice-wrapper-li-content{
+    display: inline-block;
+    width: 8.5rem;
+    height: 2rem;
+    line-height: 1rem;
+    vertical-align: top;
+    font-size: .8rem;
+    border-bottom: #e5e5e5 1px solid;
+}
+.notice-wrapper-li:last-child .notice-wrapper-li-content{/*为什么不起作用*/
+    border-bottom: none;
+}
+.notice-wrapper-li-content-span{
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    margin-top: 11.5px;
+    color: #333;
+    overflow: hidden;
+}
+/*主页文章分类部分*/
+.article-kind{
+    position: relative;
+    border-bottom: #e5e5e5 1px solid;
+}
+.article-kind-ul-li{
+    position: relative;
+    display: inline-block;
+    width: 2rem;
+    height: 1rem;
+    font-size: .5rem;
+    line-height: 1rem;
+    text-align: center;
+    vertical-align: top;
+    color: #333;
+    font-weight: 600;
+}
+.article-kind-ul-li-sel{
+    color: #ff6969;
+}
+.article-kind-ul-li-sel .article-kind-ul-li-span{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: .5rem;
+    height: 2px;
+    background: #ff6969;
+    bottom: 3px;
+}
+.article-kind-ul-li:last-child{
+    position: absolute;
+    width: 3rem;
+    right: 0;
+}
+.article-kind-ul-li-img{
+    position: absolute;
+    right: .5rem;
+    top: .1rem;
+    width: .5rem;
+    height: .5rem;
+}
+/*主页文章列表模块*/
+.article-item{
+    margin-top: 35.5px;
+}
+.article-item-userInfo{
+    height: 1rem;
+}
+.article-item-userhead{
+    display: inline-block;
+}
+.article-item-userhead-img{
+    width: 1rem;
+    height: 1rem;
+    border-radius: .5rem;
+}
+.article-item-userName{
+    display: inline-block;
+    margin-left: .5rem;
+    line-height: 1rem;
+    color: #333;
+    vertical-align: top;
+}
+.article-item-title{
+    margin-top: .4rem;
+    max-height: 2.4rem;
+    line-height:  1.2rem;
+    font-size: .5rem;
+    overflow: hidden;
+    font-weight: 600;
+    color: #262628;
+}
+.article-item-essence{
+    padding: 0 3px;
+    font-size: .5rem;
+    background-color: #ff6969;
+    color: #fff;
+}
+.article-item-brief{
+    margin-top: .2rem;
+    font-size: .4rem;
+    line-height: .5rem;
+    max-height: 1rem;
+    overflow: hidden;
+    color: #797979;
+}
+.article-item-imgs{
+    min-height: 4rem;
+    max-height: 8rem;
+    overflow: hidden;
+}
+.article-item-imgs-img{
+    width: 10rem;
+}
+/*这一部分独立出来作为公共部分，显示一些文章订阅数等信息*/
+.article-message{
+    display: flex;
+    justify-content: space-between;
+    margin-top: .3rem;
+    height: .5rem;
+    font-size: .3rem;
+    color: #919191;
+}
+.article-message-time{
+    width: 4rem;
+}
+.article-message-handle{
+    display: flex;
+    justify-content: space-between;
+    width: 4rem;
+}
+.article-message-handle-img{
+    height: .3rem;
+    width: .3rem;
+}
+/*底部菜单模块---公共模块*/
+.bottom-menu{
+    position: fixed;
+    height: 1.5rem;
+    width: 12rem;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    background: #f6f6f6;
+    border-top: #ddd 1px solid;   
+}
+.bottom-menu-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    font-size: 12px;
+}
+.bottom-menu-item-img{
+    height: .9rem;
+    width: .9rem;
+}
+.bottom-menu-item-title{
+    color: #999999;
+}
+.bottom-menu-item-sel{
+    color: #ff6969;
+}
+.bottom-menu-mainItem{
+    height: 1.3rem;
+    width: 1.3rem;
+}
+/*group分类列表部分*/
+.group-wrapper{
+    margin-top: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+.group-item{
+    margin-top: .2rem;
+    padding-top: .3rem;
+    height: 4rem;
+    border-bottom: #e5e5e5 1px solid;
+    display: flex;
+    flex-direction: row;/*子元素从左往右排列*/
+    align-items: center;
+}
+.group-item-img{
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: .2rem;
+}
+.group-item-info{
+    width: 7rem;
+    height: 3.2rem;
+    margin-left: .3rem;
+}
+.group-item-info-name{
+    margin-top: .2rem;
+    font-size: .5rem;
+    color: #333;
+}
+.group-item-info-counter{
+    margin-top: .3rem;
+    font-size: .3rem;
+    color: #919191;
+}
+.group-item-info-counter-item{
+    margin-right: .3rem;
+}
+.group-item-info-brief{
+    height: 1.2rem;
+    line-height: .6rem;
+    font-size: .4rem;
+    overflow: hidden;
+    color: #919191;
+}
+/*搜索页面部分*/
+.search-wrapper{
+   display: flex;
+   height: 1.4rem;
+   justify-content: space-between;
+   align-items: center;
+}
+.search-content{
+    position: relative;
+    width: 9rem;
+}
+.search-content-img{
+    position: absolute;
+    top: 50%;
+    left: .2rem;
+    transform: translateY(-50%);
+    width: .7rem;
+    height: .7rem;
+}
+.search-content-input{
+    height: 1rem;
+    width: 9rem;
+    padding-left: 1.1rem;
+    font-size: .5rem;
+    border-radius: .1rem;
+    background-color: #f4f4f4;
+    border: 1px solid #e7e7e7;
+}
+.search-button{
+    width: 1.5rem;
+    font-size: .6rem;
+    color: #ff6969;
+}
+.search-history-wrapper{
+    margin-top: .5rem;
+}
+.search-history-title{
+    margin-bottom: .2px;
+    color: #999999;
+}
+.search-history-item{
+    display: flex;
+    height: 1.2rem;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+.search-history-item-img{
+    height: .5rem;
+    width: .5rem;
+    margin-right: .2rem;
+}
+.search-history-item-content{
+    font-size: .5rem;
+}
+.search-history-clear{
+    height: 1.2rem;
+    line-height: 1.2rem;
+    font-size: .4rem;
+    text-align: center;
+    color: #999;
+}
+/*下面都是旧的css*/
+
+/*头部导航 返回上一页箭头那个*/
+.goback-top-wrapper{
+    width: 100%;
+    height: 44px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.goback-top-wrapper .goback-top-content{
+    width: 345px;
+    height: 100%;
+    margin: 0 auto;
+}
+.goback-top-content .goback{
+    height: 18px;
+    margin-top: 10px;
+    width: 20px;
+    display: inline-block;
+}
+.goback-top-content .goback-title{
+    display: inline-block;
+    font-size: 17px;
+    color: #333;
+    margin-left: 130px;
+}
+/*漫画入口页面*/
+/*公共class属性*/
+.info-box{
+    width: 100%;
+    border-bottom: #f6f6f6 5px solid;
+    padding-bottom: 15px;
+}
+.info-box .info-backgrund{
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    background-size: 100%;
+    top: 0;
+    left: 0;
+    filter: blur(20px);
+    z-index: -1;
+}
+/*漫画入口页面专用class属性*/
+.comic-info-wrapper{
+    padding-top: 44px;
+}
+.comic-info-wrapper .comic-cover{
+    display: block;
+    width: 28%;
+    height: 130px;
+    margin: 0 auto;
+}
+.comic-info-content{
+    width: 100%;
+}
+.comic-info-content h3{
+    margin: 20px 0 0 0;
+    padding: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+.comic-info-content .comic_authcomic_info{
+    width: 100%;
+    text-align: center;
+    margin-top: 7px;
+}
+.comic_authcomic_info .auth{
+    font-size: 13px;
+    color: #3399ff;
+}
+.comic_authcomic_info .type{
+    font-size: 12px;
+    color: #797979;
+    border: #797979 0.5px solid;
+    border-radius: 2px;
+    padding: 0 3px;
+    margin-left: 5px;
+}
+.info-box .brief{
+    width: 345px;
+    margin: 20px auto 0;
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    overflow: hidden;
+    max-height: 66px;
+    color: #333333;
+}
+.comic-list-wrapper{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 60px;
+    background-color: #ffffff;
+}
+.comic-list-wrapper h4{
+    padding: 10px;
+    margin: 0;
+}
+.comic-list-wrapper .source-select-wrapper{
+    width: 100%;
+    height: 28px;
+}
+.source-select-wrapper li{
+    margin-left: 15px;
+    line-height: 18px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    color: #333333;
+    padding: 3px;
+}
+.source-select-wrapper .source-selected{
+    color: #ff6969;
+    border-bottom: #ff6969 1px solid;
+}                    
+.comic-list-wrapper .comic-episode-list{
+    width: 100%;
+    margin-top: 10px;
+    min-height: 400px;
+}
+.comic-episode-list .comic-episode-item{
+    display: inline-block;
+    width: 103px;
+    height: 45px;
+    line-height: 45px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    border: #e5e5e5 1px solid;
+    border-radius: 2px;
+}
+/*订阅*/
+.subscription{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 49px;
+    line-height: 49px;
+    text-align: center;
+    border-top: #f6f6f6 1px solid;
+    color: #ff6969;
+    background: #fff;
+}
+/*漫画阅读页面*/
+.img-container{
+    width: 100%;
+}
+.img-container img{
+    display: block;
+    width: 100%;
+    border: none;
+}
+/*轻小说列表页面*/
+/*可提取成公共部分*/
+.mainlist-top-wrapper{
+    width: 345px;
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    line-height: 44px;
+}
+.mainList-search-wrapper{
+    width: 100%;
+    height: 44px;
+    padding: 7px 15px;
+    background-color: #f6f6f6;
+}
+.mainlist-search-input{
+    width: 100%;
+    height: 30px;
+    background: #ffffff;
+    border-radius: 3px;
+    text-align: center;
+}
+/*去内联元素的间距*/
+.clear-inline-gap{
+    letter-spacing: -5px;
+    font-size: 0;
+}
+.normal-fontStyle{
+    letter-spacing: normal;
+    font-size: 14px;
+}
+.mainlist-list-top-wrapper{
+    width: 100%;
+    height: 44px;
+    position: relative;
+}
+.mainlist-list-top-wrapper li{
+    display: inline-block;
+    width: 33%;
+    height: 38px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+    color: #333333;
+    letter-spacing: normal;
+}
+.mainlist-list-top-wrapper .mainlist-top-selected{
+    color: #ff6969;
+    border-bottom: #ff6969 2px solid;
+}
+.mainlist-list-wrapper{
+    margin-bottom: 52px;
+}
+.mainlist-list-wrapper li{
+    display: inline-block;
+    width: 30%;
+    margin-left: 11px;
+    margin-top: 15px;
+    letter-spacing: normal;
+    vertical-align: top;
+}
+.mainlist-list-wrapper li img{
+    width: 103px;
+    height: 130px;
+    overflow: hidden;
+}
+.mainlist-list-wrapper li span{
+    display: block;
+    font-size: 14px;
+    color: #666666;
+    text-align: center;
+}
+/*登录页面部分*/
+.login-icon-wrapper{
+    height: 188px;
+    width: 100%;
+    margin-top: 44px;
+    margin-bottom: 15px;
+    padding-top: 44px;
+}
+.login-icon-wrapper .login-icon{
+    display: block;
+    width: 160px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 60px;
+}
+.login-icon-wrapper .log-text{
+    text-align: center;
+    width: 100;
+    font-size: 21px;
+    margin: 10px;
+    font-weight: 600;
+    color: #ff6969;
+}
+.login-input-wrapper{
+    margin-bottom: 15px;
+}
+.login-input-wrapper .login-input{
+    display: block;
+    height: 40px;
+    width: 70%;
+    margin: 0 auto;
+    font-size: 17px;
+    border-bottom: #e9e9e9 1px solid;
+}
+.login-botton-wrapper{
+    text-align: center;
+    margin-bottom: 15px;
+}
+.login-botton-wrapper .login_button{
+    width: 60%;
+    height: 45px;
+    font-size: 18px;
+    border-radius: 23px;
+    color: #ffffff;
+    background-color: #ff6969;
+}
+.login-handle-wrapper{
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    color: #333333;
+}
+.login-handle-wrapper .login-handle{
+    margin-left: 15px;
+}
+.login-handle-wrapper .quick_register{
+    padding-right: 15px;
+    border-right: 1px #e9e9e9 solid;
+    color: #ff6969;
+}
+/*注册界面部分*/ 
+.content-wrapper{
+    margin-top: 44px;
+    width: 100%;
+}
+
+/*消息页面的CSS样式*/
+.message-top-wrapper{
+    position: relative;
+    height:220px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 0 550px #000000 inset;
+    
+    background-position: 40% 40%; 
+}
+.message-top-wrapper .user-info{
+    margin: 12% auto auto;
+    width: 20%; 
+    height: calc(width*1.4);
+}
+.message-top-wrapper .user-info .header{
+    width: 100%; 
+    height: calc(width);
+}
+.message-top-wrapper .user-info .header img{
+    width: 100%;
+    height: 100%; 
+    border-radius: 50% 50%; 
+    border: 3px solid #ffffff;
+}
+.message-top-wrapper .user-info .name{
+    width: 100%; 
+    height: 20%; 
+    margin-top: 10%;
+    text-align: center; 
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff; 
+}
+.message-top-wrapper .message-nav{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    height: 22px;
+    line-height: 20px;
+    width: 40%;
+    font-size: 16px;
+    color: #ffffff;
+}
+.message-top-wrapper .message-nav .nav-text{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    letter-spacing: normal;
+}
+.message-top-wrapper .message-nav .nav-text-selected{
+    border-bottom: 2px solid #ff6969;
+}
+.message-unlogin-wrapper{
+    margin: 20% auto auto; 
+    width: 40%; 
+    height: calc(width*1.4);
+}
+.message-unlogin-wrapper img{
+    width: 100%;
+    height:calc(width*1.25);
+}
+.message-unlogin-wrapper .unlogin-text{
+    text-align: center;
+}
+/*公共css部分*/
+.m-innergroup-wrapper{
+    width: 92%;
+    margin: auto;
+}
+
+/*个人信息页面*/
+ul.userModelList{
+    border-top: 5px solid #ddd;
+}
+ul.userModelList li{
+    position: relative; 
+    display: inline-block; 
+    width: 4rem;
+    height: 4rem;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+ul.userModelList li .model-content{
+    position: absolute; 
+    top: 20%; 
+    left: 50%;
+    width: 40%;
+    height: 40%; 
+    transform: translate(-50%, 0); 
+    text-align: center;
+}
+ul.userModelList .model-content img{
+    width: 100%;
+}
+
+

@@ -1,0 +1,84 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');//自动生成html文件的插件
+const ExtractTextPlugin = require('extract-text-webpack-plugin');//生成css文件的插件
+const CleanWebpackPlugin = require('clean-webpack-plugin');//用来清除旧生产文件的插件
+const path = require('path');//node自带的path模块，类似于Java里的基础类？
+const webpack = require('webpack');
+
+//通过变量值NODE_ENV来判断是编译生产环境还是开发环境
+var isProd = process.env.NODE_ENV === 'production';
+
+var cssDev = ['style-loader','css-loader?sourceMap','sass-loader?sourceMap'];//开发环境的sass编译
+var cssProd = ExtractTextPlugin.extract({//生产环境的css编译
+	fallback: 'style-loader',
+	use: ['css-loader','sass-loader']
+});
+
+var cssConfig = isProd?cssProd:cssDev;
+
+let pathsToClean=['dist'];
+
+module.exports = {
+	entry: {
+		'app.bundle': './src/app.js'//源代码路径
+	},
+	output: {//编译后输出的代码
+		path: path.resolve(__dirname , 'dist'),
+		filename: '[name].[hash].js'
+	},
+	plugins: [new HtmlWebpackPlugin({
+		template: './src/index.html',//以这个文件为模板，生成html文件,这个文件里会导入上面输出的js文件
+		filename: 'index.html',
+		minify: {
+			collapseWhitespace: false//文件最小化，去掉html文件里的空格
+		},
+		hash: true//文件名加上哈希吗，防止浏览器缓存
+		}),
+		new CleanWebpackPlugin(pathsToClean),
+		new ExtractTextPlugin({
+			filename: 'style.css',
+			disable: !isProd
+		}),//把js文件里的css模块以文件形式导出
+		new webpack.NamedModulesPlugin(),
+		new webpack.HotModuleReplacementPlugin()//热加载模块
+	],
+	module: {
+		rules: [
+			{//module模块加载规则，如果以.css结尾的文件则用下面这两个插件去加载
+				test: /\.css$/,
+				use: ['style-loader','css-loader']
+			},
+			{
+				test: /\.scss/,
+				use: cssConfig//根据参数决定sass的编译方式
+			},
+			{//对js和jsx文件使用babel转换语法
+				test: /\.js$/,
+				loader: 'babel-loader',
+				exclude: /node_models/
+			},
+			{
+				test: /\.jsx$/,
+				loader: 'babel-loader',
+				exclude: /node_models/
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+						option: {
+							name: '[name].[ext]',
+							outputPath: 'images/'
+						}
+					}
+				]
+			}
+		]
+	},
+	devServer: {
+		port: 9000,//设置浏览器监听的端口为9000
+		open: true,//设置为编译之后自动打开浏览器
+		hot: true//热加载，修改代码后自动刷新浏览器加载代码
+	},
+	devtool: 'source-map'//调试用，出错时追溯到源文件
+}

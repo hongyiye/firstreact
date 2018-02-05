@@ -2,7 +2,6 @@
 *{
     box-sizing: border-box;
 }
-/*git修改测试*/
 body{
     margin: 0;
     padding: 0;
@@ -123,22 +122,21 @@ input{
     height: 1rem;
 }
 .notice-wrapper-li-content{
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     width: 8.5rem;
     height: 2rem;
-    line-height: 1rem;
     vertical-align: top;
-    font-size: .8rem;
     border-bottom: #e5e5e5 1px solid;
 }
 .notice-wrapper-li:last-child .notice-wrapper-li-content{/*为什么不起作用*/
     border-bottom: none;
 }
 .notice-wrapper-li-content-span{
-    display: inline-block;
     width: 100%;
-    height: 40px;
-    margin-top: 11.5px;
+    height: 1rem;
+    line-height: 1rem;
+    font-size: .5rem;
     color: #333;
     overflow: hidden;
 }

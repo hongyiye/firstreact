@@ -1,21 +1,17 @@
-//底部菜单部分----公共组件
 import React from 'react';
+//底部菜单部分----公共组件
 
 function menuChange(itemid,event){
     //获取当前的点击对象，不是点击的原始对象
     if(itemid == this.state.selItem){
         return;
     }
-    console.log(event);
-    console.log(itemid);
-
     this.setState({selItem: itemid});
     this.props.history.push(this.state.menuItems[itemid].menuUrl);
-    //this.props.history.push('/pub/search/');
     event.stopPropagation();
 }
 
-export default class Menu extends React.Component{
+class Menu extends React.Component{
     constructor(){
         super();
         this.state = {
@@ -36,6 +32,7 @@ export default class Menu extends React.Component{
             ]
         };
     }
+
 
     render(){
         var getMenu = () =>{
@@ -63,4 +60,11 @@ export default class Menu extends React.Component{
             </div>
         );
     }
+    componentDidMount(){
+        this.setState({
+            selItem: this.props.selMenu?this.props.selMenu:this.state.selItem
+        });
+    }
 }
+
+export default Menu;

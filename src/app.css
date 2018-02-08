@@ -395,51 +395,68 @@ input{
     text-align: center;
     color: #999;
 }
-/*下面都是旧的css*/
+/*漫画和轻小说页面公共属性beg*/
+.top-title-wrapper{
+    height: 1.4rem;
+    line-height: 1.4rem;
+    font-size: .5rem;
+    text-align: center;
+}
+.inner-search-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.4rem;
+    background-color: #f6f6f6;
+}
+.inner-search-input{
+    height: 1rem;
+    width: 11rem;
+    text-align: center;
+    background-color: #fff;
+}
+.opus-type-wrapper{
+    display: flex;
+    height: 1.2rem;
+}
+.opus-type-item{
+    width: 4rem;
+    line-height: 1.2rem;
+    text-align: center;
+    font-size: .4rem;
+}
+.opus-type-item-sel{
+    border-bottom: 2px solid #ff6969;
+    color: #ff6969;
+}
+.opus-list-wrapper{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: .2rem;
+    margin-bottom: 1.5rem;
+}
+.opus-list-item{
+    width: 4rem;
+    margin-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.opus-list-item-cover{
+    width: 3.5rem;
+    height: 4.5rem;
+}
+.opus-list-item-title{
+    margin-top: .1rem;
+    line-height: .5rem;
+    font-size: .25rem;
+    text-align: center;
+    color: #666;
+}
+/*公共属性end*/
+/*作品明显及章节列表公共属性*/
 
-/*头部导航 返回上一页箭头那个*/
-.goback-top-wrapper{
-    width: 100%;
-    height: 44px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 1;
-}
-.goback-top-wrapper .goback-top-content{
-    width: 345px;
-    height: 100%;
-    margin: 0 auto;
-}
-.goback-top-content .goback{
-    height: 18px;
-    margin-top: 10px;
-    width: 20px;
-    display: inline-block;
-}
-.goback-top-content .goback-title{
-    display: inline-block;
-    font-size: 17px;
-    color: #333;
-    margin-left: 130px;
-}
-/*漫画入口页面*/
-/*公共class属性*/
-.info-box{
-    width: 100%;
-    border-bottom: #f6f6f6 5px solid;
-    padding-bottom: 15px;
-}
-.info-box .info-backgrund{
-    position: absolute;
-    width: 100%;
-    height: 200px;
-    background-size: 100%;
-    top: 0;
-    left: 0;
-    filter: blur(20px);
-    z-index: -1;
-}
 /*漫画入口页面专用class属性*/
 .comic-info-wrapper{
     padding-top: 44px;
@@ -533,6 +550,52 @@ input{
     border: #e5e5e5 1px solid;
     border-radius: 2px;
 }
+/*下面都是旧的css*/
+
+/*头部导航 返回上一页箭头那个*/
+.goback-top-wrapper{
+    width: 100%;
+    height: 44px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.goback-top-wrapper .goback-top-content{
+    width: 345px;
+    height: 100%;
+    margin: 0 auto;
+}
+.goback-top-content .goback{
+    height: 18px;
+    margin-top: 10px;
+    width: 20px;
+    display: inline-block;
+}
+.goback-top-content .goback-title{
+    display: inline-block;
+    font-size: 17px;
+    color: #333;
+    margin-left: 130px;
+}
+/*漫画入口页面*/
+/*公共class属性*/
+.info-box{
+    width: 100%;
+    border-bottom: #f6f6f6 5px solid;
+    padding-bottom: 15px;
+}
+.info-box .info-backgrund{
+    position: absolute;
+    width: 100%;
+    height: 200px;
+    background-size: 100%;
+    top: 0;
+    left: 0;
+    filter: blur(20px);
+    z-index: -1;
+}
+
 /*订阅*/
 .subscription{
     position: fixed;

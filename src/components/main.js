@@ -29,6 +29,7 @@ export default class Main extends React.Component{//通过继承Component的方�
     constructor(){
         super();
         this.state = {//存放组件内部的数据
+            menuId: 0,
             panelFlag: 0,//显示主页还是列表页面
             noticeItems: [],
             articleItems: [],
@@ -193,8 +194,8 @@ export default class Main extends React.Component{//通过继承Component的方�
             <ul className="m-center group-wrapper" style={{display:this.state.panelFlag == 0?'none':'block'}}>
                 {this._getGroupItemView()}
             </ul>
-            {/*公共的地步菜单组件*/}
-            <Menu history={this.props.history}></Menu>
+            {/*公共的菜单组件*/}
+            <Menu history={this.props.history} selMenu={this.state.menuId}></Menu>
         </div>
         );
     }

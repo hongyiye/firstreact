@@ -16,7 +16,7 @@ class Menu extends React.Component{
         super();
         this.state = {
             selItem: '0',
-            menuItems: [                                                             
+            menuItems: [
                 {menu_id:'0',menuUrl:'/',className:'bottom-menu-item-title',srcLink:'static/images/icons/menugroupunsel.png',menuTiele:'圈子'},
                 {menu_id:'1',menuUrl:'/comic/',className:'bottom-menu-item-title',srcLink:'static/images/icons/menucomicunsel.png',menuTiele:'漫画'},
                 {menu_id:'2',menuUrl:'/',className:'bottom-menu-item-title',srcLink:'static/images/icons/menupushicon.png',menuTiele:''},

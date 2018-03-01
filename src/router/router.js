@@ -6,6 +6,8 @@ import Main from '../components/main';
 import Comic from '../components/comic/Comic.js';
 import Book from '../components/book/Book.js';
 import UserInfo from '../components/user/UserInfo.js';
+
+import ArticleDetail from '../components/article/ArticleDetail.js';
 //公共的页面
 import Search from '../components/pub/Search.js';
 
@@ -19,6 +21,8 @@ export default class RouterMap extends React.Component{
                     <Route exact path="/comic" component={Comic}/>
                     <Route exact path="/book" component={Book}/>
                     <Route exact path="/user/userinfo" component={UserInfo}/>
+
+                    <Route exact path="/ArticleDetail" component={ArticleDetail}/>
                     {/*公共的页面*/}
                     <Route path="/pub/search/" component={Search}/>
                 </Switch>

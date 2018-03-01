@@ -21,7 +21,7 @@ function calculateWinner(squares) {
     return null;
   }
 
-class Square extends React.Component {
+class Square extends React.Component {//一个棋格子
     constructor() {
         super();
         this.state = {
@@ -37,7 +37,7 @@ class Square extends React.Component {
     }
   }
 
-class Board extends React.Component{
+class Board extends React.Component{//整个棋盘
 
     renderSquare(i){
         return <Square value={this.props.squares[i]}
@@ -67,7 +67,7 @@ class Board extends React.Component{
     }
 }
 
-export default class Game extends React.Component {
+export default class Game extends React.Component {//在棋盘外包装了整个游戏的逻辑
     constructor() {
         super();
         this.state = {

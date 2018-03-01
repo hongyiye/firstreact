@@ -1,19 +1,7 @@
 import React from 'react';
 import {hongye} from '../js/hongye.js';//自己写的工具类
 import Menu from './pub/Menu.js';
-
-
-//获取服务器数据
-function getArticles(param,callback){//获取文章的都用这个请求
-    var params = {
-                opcode: 'vueArticleList',
-                rescode: 'vueArticleListQry',
-                blog_type: param.blog_type?param.blog_type:'',
-                blog_special_type: param.blog_special_type?param.blog_special_type:'',
-                blog_detail_type: param.blog_detail_type?param.blog_detail_type:''
-        };
-   hongye.basepost('server.vue.query.view.blog.ArticleListService.service',params,callback);
-}
+import ArticleList from './pub/ArticleList.js';
 
 //面板选择事件
 function panelChange(event){
@@ -23,6 +11,7 @@ function panelChange(event){
     }else if(targetDom.id == 'group_page_button'){
         this.setState({panelFlag: 1});
     }
+    event.stopPropagation();
 }
 
 export default class Main extends React.Component{//通过继承Component的方式来生成新的组件
@@ -31,13 +20,10 @@ export default class Main extends React.Component{//通过继承Component的方�
         this.state = {//存放组件内部的数据
             menuId: 0,
             panelFlag: 0,//显示主页还是列表页面
-            noticeItems: [],
-            articleItems: [],
             groupItems: []
         };
     }
     
-
     _gotoSearch(event){//直接这样定义，不加function关键字，不能用箭头函数
         //console.log(event.target);
         //history.push('');
@@ -83,73 +69,6 @@ export default class Main extends React.Component{//通过继承Component的方�
     }
 
     render(){
-        //这里使用箭头函数是为了绑定函数中的this
-        var getNoticeItems = () => {//获取公告列表的信息
-            var i=0;
-            var res = [];
-            for(i=0; i<this.state.noticeItems.length; i++){
-                res.push(
-                <li key={i} className="clear-inline-gap notice-wrapper-li">
-                    <div className="userhead">
-                        <img className="userhead-img" src={this.state.noticeItems[i].user_icon}/>
-                    </div>
-                    <div className="normal-fontStyle notice-wrapper-li-content">
-                        <span className="notice-wrapper-li-content-span">{this.state.noticeItems[i].blog_title}</span>
-                    </div>
-                </li>
-                );
-            }
-            return res;
-        }
-
-        var getArticleItems = () =>{//获取文章列表的信息
-            var i=0;
-            var res = [];
-            var item;
-            for(i=0; i<this.state.articleItems.length; i++){
-                item = this.state.articleItems[i];
-                res.push(
-                    <li className="article-item" key={i}>
-                    <div className="article-item-userInfo">
-                        <div className="article-item-userhead">
-                            <img src="static/images/defaulthead.png" className="article-item-userhead-img"/> 
-                        </div>
-                        <div className="article-item-userName">{item.blog_author}</div>
-                    </div>
-                    <div className="article-item-title">
-                        {item.blog_special_type == 1&&<span className='article-item-essence'>精</span>}
-                        {item.blog_title}
-                    </div>
-                    <div className="article-brief">
-                    {item.blog_brief}
-                    </div>
-                    <div className="article-img" >
-                        <img src={item.blog_img} className="article-item-imgs-img"/>
-                    </div>
-                    <div className="article-message">
-                        <div className="article-message-time">02:42 10/14</div>
-                        <div className="article-message-handle">
-                            <div>
-                                <img className="article-message-handle-img" src="./static/images/icons/commentIcon.png"/>
-                                <span>11</span>
-                            </div>
-                            <div>
-                                <img className="article-message-handle-img" src="./static/images/icons/niceIcon.png"/>
-                                <span>11</span>
-                            </div>
-                            <div>
-                                <img className="article-message-handle-img" src="./static/images/icons/collectIcon.png"/>
-                                <span>11</span>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                );
-            }
-            return res;
-        }
-        
-
         return (
         <div className="m-wrapper" id="menu_modular">
             {/*顶部菜单部分 首页列表*/}
@@ -170,7 +89,7 @@ export default class Main extends React.Component{//通过继承Component的方�
             <div style={{display:this.state.panelFlag == 1?'none':'block'}}>
             <div className="notice-wrapper">
                 <ul className="m-center notice-items" id="notice_group">
-                    {getNoticeItems()}
+                    <ArticleList blog_type={1} listType={1} history={this.props.history}></ArticleList>
                 </ul>
             </div>
             {/*文章分类部分*/}
@@ -185,9 +104,9 @@ export default class Main extends React.Component{//通过继承Component的方�
                     </li>
                 </ul>
             </div>
-           {/*文章列表部分*/}
+           {/*文章列表部分{getArticleItems()}*/}
             <ul className="m-center">
-                {getArticleItems()}
+                <ArticleList blog_type={2} history={this.props.history}></ArticleList>
             </ul>
             </div>
             {/*文章分组列表部分*/}
@@ -200,19 +119,6 @@ export default class Main extends React.Component{//通过继承Component的方�
         );
     }
     componentDidMount(){
-        //使用箭头函数，绑定this//避免在回调函数里this指向变了
-        var getnoticeCallback = (resultText) =>{
-            var result = JSON.parse(resultText);
-            this.setState({noticeItems:result.dataSetResult});
-        }
-        getArticles({blog_type:1},getnoticeCallback);
-
-        var getArticlesCallback = (resultText) =>{
-            var result = JSON.parse(resultText);
-            this.setState({articleItems:result.dataSetResult});
-        }
-        getArticles({blog_type:2},getArticlesCallback);
-
         //获取文章分组列表数据
         this.getGroupItems();
     }
